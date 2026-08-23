@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador de Productos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📦 Administrador de Productos</h1>
+            <div class="header-actions">
+                <button onclick="exportarJSON()" class="btn btn-secondary">📥 Exportar JSON</button>
+                <button onclick="importarJSON()" class="btn btn-secondary">📤 Importar JSON</button>
+            </div>
+        </header>
+
+        <!-- Formulario para agregar/editar productos -->
+        <div class="form-section">
+            <h2 id="formTitle">Agregar Nuevo Producto</h2>
+            <form id="productForm">
+                <input type="hidden" id="editId">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nombre">Nombre *</label>
+                        <input type="text" id="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoria">Categoría *</label>
+                        <input type="text" id="categoria" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="precio">Precio ($) *</label>
+                        <input type="number" id="precio" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="stock">Stock *</label>
+                        <input type="number" id="stock" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="codigo">Código *</label>
+                        <input type="text" id="codigo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha_registro">Fecha Registro</label>
+                        <input type="date" id="fecha_registro">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="descripcion">Descripción</label>
+                        <textarea id="descripcion" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="imagen">Ruta Imagen</label>
+                        <input type="text" id="imagen" placeholder="img/productos/ejemplo.jpg">
+                    </div>
+                    <div class="form-group">
+                        <label for="thumbnail">Ruta Thumbnail</label>
+                        <input type="text" id="thumbnail" placeholder="img/thumbnails/ejemplo.jpg">
+                    </div>
+                    <div class="form-group">
+                        <label for="etiquetas">Etiquetas (separadas por coma)</label>
+                        <input type="text" id="etiquetas" placeholder="kit, girasol, principiante">
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="destacado"> Destacado
+                        </label>
+                        <label>
+                            <input type="checkbox" id="ofertas"> En Oferta
+                        </label>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">💾 Guardar Producto</button>
+                    <button type="reset" class="btn btn-secondary" onclick="resetForm()">🔄 Limpiar</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Tabla de productos -->
+        <div class="table-section">
+            <div class="table-header">
+                <h2>Lista de Productos</h2>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="🔍 Buscar productos..." onkeyup="buscarProductos()">
+                </div>
+            </div>
+            <div id="productTableContainer">
+                <table id="productTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Código</th>
+                            <th>Destacado</th>
+                            <th>Ofertas</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTableBody">
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-footer">
+                <span id="totalProductos">Total: 0 productos</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para confirmar eliminación -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <h3>Confirmar Eliminación</h3>
+            <p>¿Estás seguro de que deseas eliminar este producto?</p>
+            <div class="modal-actions">
+                <button onclick="confirmDelete()" class="btn btn-danger">Sí, Eliminar</button>
+                <button onclick="closeDeleteModal()" class="btn btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para mensajes -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <h3 id="messageTitle">Mensaje</h3>
+            <p id="messageText"></p>
+            <div class="modal-actions">
+                <button onclick="closeMessageModal()" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
