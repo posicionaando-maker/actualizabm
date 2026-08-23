@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "nombre": "Kit Jardín Urbano",
+    "categoria": "kits",
+    "precio": 2490,
+    "descripcion": "Maceta + sustrato + 3 semillas de girasol. Perfecto para comenzar tu huerto en casa.",
+    "stock": 15,
+    "codigo": "KIT-001",
+    "fecha_registro": "2026-01-15",
+    "imagen": "img/productos/kit-jardin.jpg",
+    "thumbnail": "img/thumbnails/kit-jardin.jpg",
+    "destacado": true,
+    "ofertas": true,
+    "etiquetas": ["kit", "girasol", "principiante"]
+  },
+  {
+    "id": 2,
+    "nombre": "Maceta Autorriego",
+    "categoria": "macetas",
+    "precio": 1200,
+    "descripcion": "Maceta con sistema de autorriego para plantas de interior.",
+    "stock": 25,
+    "codigo": "MAC-001",
+    "fecha_registro": "2026-01-16",
+    "imagen": "img/productos/maceta-autorriego.jpg",
+    "thumbnail": "img/thumbnails/maceta-autorriego.jpg",
+    "destacado": false,
+    "ofertas": true,
+    "etiquetas": ["maceta", "autorriego", "interior"]
+  }
+]
